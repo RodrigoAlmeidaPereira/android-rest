@@ -12,6 +12,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.facebook.stetho.okhttp3.StethoInterceptor
+import okhttp3.OkHttpClient
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +27,11 @@ class MainActivity : AppCompatActivity() {
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(
+                    OkHttpClient.Builder()
+                        .addNetworkInterceptor(StethoInterceptor())
+                        .build()
+                )
                 .build()
 
             val service = retrofit.create<GithubService>(GithubService::class.java!!)
