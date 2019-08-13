@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">github-app</string>
+    <string name="label_title">GithubApp</string>
+    <string name="login">Login</string>
+</resources>
